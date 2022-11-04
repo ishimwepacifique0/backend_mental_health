@@ -9,5 +9,5 @@ class Detailapi(serializers.ModelSerializer):
 
 class Detaildoctor(serializers.ModelSerializer):
     class Meta:
-        models = Doctor
-        fields = ['fullname','country','email','password','speciality','upload_image']
+        model = Doctor
+        fields = ['id','fullname','country','email','password','speciality','upload_image']

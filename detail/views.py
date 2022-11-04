@@ -49,12 +49,12 @@ def modify(request,id):
 def getdatadoctor(request):
     if request.method == "GET":
         selectdata = Doctor.objects.all()
-        serializer = Detailapi(selectdata,many=True)
+        serializer = Detaildoctor(selectdata,many=True)
         return JsonResponse(serializer.data,safe=False)
 
     elif request.method == "POST":
         data=JSONParser().parse(request)
-        serializer = Detailapi(data= data)
+        serializer = Detaildoctor(data= data)
         if serializer.is_valid():
             serializer.save()
         return JsonResponse(serializer.data)
@@ -64,13 +64,13 @@ def getdatadoctor(request):
 def modifydoctor(request,id):
     if request.method == 'GET':
         selectdata = Doctor.objects.get(id=id)
-        serializer = Detailapi(selectdata)
+        serializer = Detaildoctor(selectdata)
         return JsonResponse(serializer.data,safe=False)
 
     elif request.method == 'PUT':
         selectdata = Doctor.objects.get(id=id)
         data = JSONParser().parse(request)
-        serializer = Detailapi(selectdata,data=data)
+        serializer = Detaildoctor(selectdata,data=data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data,status=201)

@@ -16,7 +16,7 @@ class Doctor(models.Model):
     email = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
     speciality = models.CharField(max_length=255)
-    upload_image = models.ImageField() 
+    upload_image = models.ImageField(upload_to="my_picture",blank=True) 
 
     def __str__(self):
         return self.fullname
